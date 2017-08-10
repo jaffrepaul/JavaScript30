@@ -22,6 +22,23 @@
 
   <style>
 
+    :root {
+      --base: red;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .h1 {
+      color: var(--base);
+
+    }
+
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -45,7 +62,31 @@
   </style>
 
   <script>
+
+    const inputs = document.querySelectorAll('.controls input');
+
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix); //access style attr of all page elements > set prop > add suffix
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
   </script>
 
 </body>
 </html>
+
+
+<!--
+takeaways:
+-css variable syntax
+- grabbing all elements of a specific type via querySelectorAll
+- using arrow func in array(or nodelist) methods
+- mousemove event listener -> tracks all changes from mouse movement
+- data attributes on input fields
+- 'dataset' returns obj of all element's attributes
+- access style attr of all page elements
+- ES6 template literals
+-->
