@@ -105,9 +105,7 @@
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
     const itemCount = data.reduce(function(obj, item, index) {
-      if (!obj[item]) {
-        obj[item] = 0;  //initialize the obj to have item: 0 for each item
-      }
+      if (!obj[item]) obj[item] = 0;  //initialize the obj to have item: 0 for each item
       obj[item]++  //iterate and increment each item as it's found
       return obj;
     }, {});
